@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface VehicleDAO {
 //	public void init();
+	
 	public int getVehicleID();
 	public int getYear(int id);
 	public String getMake(int id);
@@ -19,7 +20,7 @@ public interface VehicleDAO {
 	public double getDisplacement(int id);
 	public boolean getGasTaxRequired(int id);
 	
-	
+	public Vehicle getVehicleByID(int id);
 	public List<Vehicle> getAllVehicles();
 	
 	

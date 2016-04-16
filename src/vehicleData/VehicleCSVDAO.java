@@ -48,6 +48,8 @@ public class VehicleCSVDAO implements VehicleDAO {
 
 	}// initDAO()
 
+
+	
 	public void readInFile(BufferedReader buf) throws IOException {
 		String line = "";
 		while ((line = buf.readLine()) != null) {
@@ -184,6 +186,17 @@ public class VehicleCSVDAO implements VehicleDAO {
 	public List<Vehicle> getAllVehicles() {
 		// TODO Auto-generated method stub
 		return vehicleListFull;
+	}
+
+	@Override
+	public Vehicle getVehicleByID(int id) {
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){ 
+				return vehicle;
+			
+			}
+		}
+		return null;
 	}
 
 }

@@ -2,19 +2,19 @@ package vehicleData;
 
 public class VehicleParameters {
 
-	private Integer yearStart = 1768;
+	private Integer yearStart = 1984;
 	private Integer yearEnd = 2016;
 	private String make;
 	private String model;
 	private Double mpg;
-	private String mpgBool = "more";
+	private String mpgBool = "";
 	private String transmission;		
 	private String fuelType;
 	private String driveWheels;
 	private Integer numberOfCylinders;
-	private String cylBool = "more";
+	private String cylBool = "";
 	private Double displacement;
-	private String dispBool = "more";
+	private String dispBool = "";
 	private String gasTax = "";
 	
 	

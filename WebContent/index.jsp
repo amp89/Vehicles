@@ -12,11 +12,10 @@
 </head>
 <body>
 <form action="menuchoice.do" method="POST">
-	<button type="submit" name="selection" value="range">Find Vehicles</button>
-	<button type="submit" name="selection" value="add">Add</button>
-	take out: <button type="submit" name="selection" value="remove">Remove</button>
-	<button type="submit" name="selection" value="all">View All</button>
- 	take out: <button id="mod"  name="selection" value="modify">Modify</button>
+	<button type="submit" name="selection" value="range">Find/Modify/Remove Vehicles</button>
+	<button type="submit" name="selection" value="add">Add a Vehicle</button>
+	<button type="submit" name="selection" value="all">View All Vehicles</button>
+ 	
 
  
 
@@ -27,7 +26,7 @@
 	<input id="vidInput" type="text" name="id">
 
 </form>
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 

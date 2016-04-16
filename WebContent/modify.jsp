@@ -55,8 +55,29 @@ Gas Tax Required: <form:input path="gasTaxRequired" /><br>
 <!-- <input type="radio" name="choice" value="add"> -->
 
 <input type="submit" value="click this"><br>
-
 </form:form>
+
+<br>
+${vehicle.vehicleID}
+${vehicle.year}
+${vehicle.make}
+${vehicle.model}
+${vehicle.mpgHighway}
+${vehicle.mpgCity}
+${vehicle.carbonEmission}
+${vehicle.transmission}
+${vehicle.fuelType}
+${vehicle.driveWheels}
+${vehicle.numberOfCylinders}
+${vehicle.gasTaxRequired}
+		<br> 
+	<form action="changeVehicle.do" method="GET">
+	<input type="hidden" name="choice" value="modify" />
+	<input type="hidden" name="currentId" value="${vehicle.vehicleID}" />
+	<button type="submit" name="nav" value="prev">previous</button>
+	<button type="submit" name="nav" value="next">next</button>
+		</form>
+
 
 
 </body>

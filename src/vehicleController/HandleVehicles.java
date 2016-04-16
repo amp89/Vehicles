@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,7 +33,7 @@ public class HandleVehicles {
 	public ModelAndView initilizeListAndIndex(@ModelAttribute("vehicleListFull") List<Vehicle> vl) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("vehicleListFull", vl);
-		mv.addObject("length", vl.size()); //TODO: is this really needed
+		mv.addObject("length", vl.size()); // TODO: is this really needed
 		mv.setViewName("index.jsp");
 		return mv;
 	}
@@ -72,17 +73,17 @@ public class HandleVehicles {
 	// mv.addObject("test", stupid);
 	// return mv;
 	// }
-	
+
 	@RequestMapping(path = "addVehicle.do")
-	public ModelAndView addVehcile(Vehicle vehicle, @ModelAttribute("vehicleListFull") List<Vehicle> fullVehicleList){
+	public ModelAndView addVehcile(Vehicle vehicle, @ModelAttribute("vehicleListFull") List<Vehicle> fullVehicleList) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("ADDED: " + vehicle);
 		fullVehicleList.add(vehicle);
-		
-		mv.setViewName("index.jsp");		
-		
+
+		mv.setViewName("index.jsp");
+
 		return mv;
-		
+
 	}
 
 	@RequestMapping(path = "modifyVehicle.do")
@@ -93,7 +94,6 @@ public class HandleVehicles {
 		/*
 		 * TODO: switch to methods
 		 */
-
 
 		System.out.println(vehicle);
 		// mod works here
@@ -106,7 +106,7 @@ public class HandleVehicles {
 				break;
 			}
 		}
-		if(i > fullVehicleList.size()){
+		if (i > fullVehicleList.size()) {
 			System.out.println("Vehicle Not Found");
 		}
 		switch (choice) {
@@ -115,19 +115,20 @@ public class HandleVehicles {
 			System.out.println(idToChange);
 			System.out.println("NOW SET VEHICLE");
 			fullVehicleList.set(i, vehicle);
+			mv.setViewName("modify.jsp");
 			break;
 		case "delete":
 			System.out.println("BREAK STUFF HERE");
 			System.out.println(idToChange);
 			System.out.println("NOW SET VEHICLE");
 			fullVehicleList.remove(i);
+			mv.setViewName("index.jsp");
 			break;
 		}
 
 		// Vehicle v = new Vehicle();
 
-//		mv.addObject("vehicle", vehicle);
-		mv.setViewName("index.jsp");
+		// mv.addObject("vehicle", vehicle);
 		return mv;
 	}
 
@@ -180,9 +181,27 @@ public class HandleVehicles {
 			vp.setDisplacement(0.0);
 		}
 
-		/*
-		 * TODO combine into one
-		 */
+		vehicleRange = filterVehicles(vehicleRange, vp);
+
+		return vehicleRange;
+	}// method end - get range
+
+	private List<Vehicle> filterVehicles(List<Vehicle> vehicleRange, VehicleParameters vp) {
+		vehicleRange = filterYear(vehicleRange, vp);
+		vehicleRange = filterMake(vehicleRange, vp);
+		vehicleRange = filterModel(vehicleRange, vp);
+		vehicleRange = filterMpg(vehicleRange, vp);
+		vehicleRange = filterTransmission(vehicleRange, vp);
+		vehicleRange = filterFuelType(vehicleRange, vp);
+		vehicleRange = filterDriveWheels(vehicleRange, vp);
+		vehicleRange = filterCylinders(vehicleRange, vp);
+		vehicleRange = filterDisplacement(vehicleRange, vp);
+		vehicleRange = filterGasTax(vehicleRange, vp);
+
+		return vehicleRange;
+	}
+
+	private List<Vehicle> filterYear(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> yearIterator = vehicleRange.iterator();
 		while (yearIterator.hasNext()) {
 			Vehicle v = yearIterator.next();
@@ -191,7 +210,10 @@ public class HandleVehicles {
 				// System.out.println("thing:" + v);
 			}
 		}
+		return vehicleRange;
+	}
 
+	private List<Vehicle> filterMake(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> makeIterator = vehicleRange.iterator();
 		while (makeIterator.hasNext()) {
 			Vehicle v = makeIterator.next();
@@ -200,6 +222,10 @@ public class HandleVehicles {
 				// System.out.println("thing:" + v);
 			}
 		}
+		return vehicleRange;
+	}
+
+	private List<Vehicle> filterModel(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> modelIterator = vehicleRange.iterator();
 		while (modelIterator.hasNext()) {
 			Vehicle v = modelIterator.next();
@@ -209,6 +235,10 @@ public class HandleVehicles {
 			}
 		}
 
+		return vehicleRange;
+	}
+
+	private List<Vehicle> filterMpg(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> mpgIterator = vehicleRange.iterator();
 		while (mpgIterator.hasNext()) {
 			Vehicle v = mpgIterator.next();
@@ -229,6 +259,10 @@ public class HandleVehicles {
 			}
 		}
 
+		return vehicleRange;
+	}
+
+	private List<Vehicle> filterTransmission(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> transmissionIterator = vehicleRange.iterator();
 		while (transmissionIterator.hasNext()) {
 			Vehicle v = transmissionIterator.next();
@@ -237,7 +271,10 @@ public class HandleVehicles {
 				// System.out.println("thing:" + v);
 			}
 		}
+		return vehicleRange;
+	}
 
+	private List<Vehicle> filterFuelType(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> fuelTypeIterator = vehicleRange.iterator();
 		while (fuelTypeIterator.hasNext()) {
 			Vehicle v = fuelTypeIterator.next();
@@ -247,6 +284,10 @@ public class HandleVehicles {
 			}
 		}
 
+		return vehicleRange;
+	}
+
+	private List<Vehicle> filterDriveWheels(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> driveWheelIterator = vehicleRange.iterator();
 		while (driveWheelIterator.hasNext()) {
 			Vehicle v = driveWheelIterator.next();
@@ -255,6 +296,11 @@ public class HandleVehicles {
 				// System.out.println("thing:" + v);
 			}
 		}
+
+		return vehicleRange;
+	}
+
+	private List<Vehicle> filterCylinders(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> cylinderIterator = vehicleRange.iterator();
 		while (cylinderIterator.hasNext()) {
 			Vehicle v = cylinderIterator.next();
@@ -274,7 +320,10 @@ public class HandleVehicles {
 
 			}
 		}
+		return vehicleRange;
+	}
 
+	private List<Vehicle> filterDisplacement(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> displacementIterator = vehicleRange.iterator();
 		while (displacementIterator.hasNext()) {
 			Vehicle v = displacementIterator.next();
@@ -294,9 +343,14 @@ public class HandleVehicles {
 
 			}
 		}
+		return vehicleRange;
+	}
+
+	private List<Vehicle> filterGasTax(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> gasTaxIterator = vehicleRange.iterator();
 		while (gasTaxIterator.hasNext()) {
 			Vehicle v = gasTaxIterator.next();
+			// would not work without this cast
 			if (!v.isGasTaxRequired() && vp.getGasTax().trim().toLowerCase().startsWith("t")) {
 				gasTaxIterator.remove();
 			}
@@ -308,9 +362,45 @@ public class HandleVehicles {
 		}
 
 		System.out.println("LIST SIZE: " + vehicleRange.size());
-
 		return vehicleRange;
-	}// method end - get range
+	}
+
+	@RequestMapping(path = "changeVehicle.do", method = RequestMethod.GET)
+	public ModelAndView changeVehicle(@ModelAttribute("vehicleListFull") List<Vehicle> vl,
+			@RequestParam("choice") String c, @RequestParam("currentId") int id, @RequestParam("nav") String nav) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("id:" + id);
+		System.out.println("nav:" + nav);
+		// modify needs id and selection
+		int index = vl.indexOf(vehicleDAO.getVehicleByID(id));
+		switch (nav) {
+		case "next":
+			if (index == vl.size() - 1) {
+				index = 0;
+			} else {
+				index++;
+			}
+			break;
+
+		case "prev":
+			if (index == 0) {
+				index = vl.size() - 1;
+			} else {
+				index--;
+			}
+			break;
+
+		default:
+			break;
+		}
+		// mv.addObject("currentId", id);
+		mv.addObject("id", vl.get(index).getVehicleID());
+		mv.addObject("vehicle", vl.get(index)); // threw error when this was not
+												// present
+		// i think whatever calls it needs to give it a vehicle to modify
+		mv.setViewName("modify.jsp");
+		return mv;
+	}
 
 	@RequestMapping("menuchoice.do")
 	public ModelAndView pageDirection(@ModelAttribute("vehicleListRange") List<Vehicle> vlr,
@@ -322,14 +412,15 @@ public class HandleVehicles {
 		mv.addObject("vehicleListRange", vlr);
 		System.out.println("ID TO MODIFY: " + vehicleID);
 		// handle id inputs (for add/replace/update)
+		// TODO: obsolete
 		if (vehicleID != null) {
 			for (Vehicle vehicle : vlf) {
 				if (vehicle.getVehicleID() == vehicleID) {
 					mv.addObject("vehicleToModify", vehicle);
 				}
-//sdflkj
 			}
 		}
+		// main program directions
 		switch (s) {
 		case "all":
 			mv.setViewName("viewall.jsp");
@@ -340,11 +431,11 @@ public class HandleVehicles {
 			break;
 		case "add":
 			mv.addObject("nextID", vlf.size());
-			mv.addObject("vehicle",new Vehicle());
+			mv.addObject("vehicle", new Vehicle());
 			mv.setViewName("add.jsp");
 			break;
 		case "remove":
-			mv.setViewName("remove.jsp");
+			mv.setViewName("modify.jsp");
 			break;
 		case "modify":
 			mv.setViewName("modify.jsp");

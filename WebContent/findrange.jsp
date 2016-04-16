@@ -44,19 +44,26 @@
 	Make: <form:input path="make" />
 	Model: <form:input path="model" />
 	Average MPG: <form:input path="mpg" />
-	More<form:radiobutton path="mpgBool" value="more"/>Less<form:radiobutton path="mpgBool" value="less"/><br>
+	No Preference<form:radiobutton path="mpgBool" value=""></form:radiobutton><br>
+	More<form:radiobutton path="mpgBool" value="more"/><br>
+	Less<form:radiobutton path="mpgBool" value="less"/><br>
 	Transmission: <form:input path="transmission" />
 	Fuel Type: <form:input path="fuelType" />
 	Drive Wheels: <form:input path="driveWheels" />
 	Cly: <form:input path="numberOfCylinders" />
-	More<form:radiobutton path="cylBool" value="more"/>Less<form:radiobutton path="cylBool" value="less"/><br>
+	No Preference<form:radiobutton path="cylBool" value=""/>
+	More<form:radiobutton path="cylBool" value="more"/>
+	Less<form:radiobutton path="cylBool" value="less"/><br>
 
 	Displacement: <form:input path="displacement" />
-	More<form:radiobutton path="dispBool" value="more"/>Less<form:radiobutton path="dispBool" value="less"/><br>
+	No Preference<form:radiobutton path="dispBool" value=""/><br>
+	More<form:radiobutton path="dispBool" value="more"/><br>
+	Less<form:radiobutton path="dispBool" value="less"/><br>
 
 
 	
-	Gas Tax: I don't care<form:radiobutton path="gasTax" value="" /><br>
+	Gas Tax: <br>
+	I don't care<form:radiobutton path="gasTax" value="" /><br>
 	True<form:radiobutton path="gasTax" value="true"/><br>
 	False<form:radiobutton path="gasTax" value="false"/><br>
 	<input type="submit" value="Find Vehicles">
