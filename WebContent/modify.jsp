@@ -3,6 +3,7 @@
     <%@ taglib
     uri="http://www.springframework.org/tags/form"
     prefix="form"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -70,6 +71,13 @@ ${vehicle.fuelType}
 ${vehicle.driveWheels}
 ${vehicle.numberOfCylinders}
 ${vehicle.gasTaxRequired}
+
+<%-- <img src="images/large/${fn:toLowerCase(vehicle.make)}.png" alt="mages/large/unknown.png" /> --%>
+
+  <object data="images/large/${fn:toLowerCase(vehicle.make)}.png" type="image/png">
+    <img src="images/large/unknown.png" />
+   </object>
+
 		<br> 
 	<form action="changeVehicle.do" method="GET">
 	<input type="hidden" name="choice" value="modify" />

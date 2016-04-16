@@ -12,6 +12,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import vehicleController.VehicleFilter;
+
 public class VehicleCSVDAO implements VehicleDAO {
 	private List<Vehicle> vehicleListFull = new ArrayList<>();
 	private final String csvFileName = "vehicle-specifications.csv";
@@ -50,7 +52,7 @@ public class VehicleCSVDAO implements VehicleDAO {
 
 
 	
-	public void readInFile(BufferedReader buf) throws IOException {
+	private void readInFile(BufferedReader buf) throws IOException {
 		String line = "";
 		while ((line = buf.readLine()) != null) {
 			String[] tokens = line.split(",");
