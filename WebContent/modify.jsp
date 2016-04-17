@@ -113,6 +113,10 @@
 										<td>MPG (Highway)</td>
 										<td><form:input path="mpgHighway" size="4" /></td>
 									</tr>
+									<tr>
+										<td>MPG (City)</td>
+										<td><form:input path="mpgCity" size="4" /></td>
+									</tr>
 
 									<tr>
 										<td>Carbon Emission:</td>
@@ -138,6 +142,10 @@
 										<td>Number of Cylinders:</td>
 										<td><form:input path="numberOfCylinders" size="4" /></td>
 									</tr>
+									<tr>
+										<td>Displacement:</td>
+										<td><form:input path="displacement" size="4" /></td>
+									</tr>
 
 									<tr>
 										<td>Gas Tax Required:</td>
@@ -151,7 +159,6 @@
 									<input type="radio" name="choice" value="modify" checked>Modify&nbsp;&nbsp;&nbsp;
 									<input type="radio" name="choice" value="delete">Delete
 
-									<!-- <input type="radio" name="choice" value="add"> -->
 
 								<button type="submit" value="mod" class="btn btn-warning">Modify
 									/ Remove</button>
@@ -180,6 +187,7 @@
 							<br> <br> <br> <br> <br>
 
 						</div>
+						<div id="site-description">
 						Currently Saved Vehicle Data: <br> Year: ${vehicle.year}<br>
 						Make: ${vehicle.make}<br> Model: ${vehicle.model}<br>
 						MPG (Highway): ${vehicle.mpgHighway}<br> MPG (City)
@@ -187,8 +195,9 @@
 						${vehicle.carbonEmission}<br> Transmission:
 						${vehicle.transmission}<br> Fuel Type: ${vehicle.fuelType}<br>
 						Drive Wheels: ${vehicle.driveWheels}<br> Cylinders:
-						${vehicle.numberOfCylinders}<br> Gas Tax?:
+						${vehicle.numberOfCylinders}<br> Displacement: ${vehicle.displacement}<br>Gas Tax?:
 						${vehicle.gasTaxRequired}
+						</div>
 					</div>
 
 
@@ -196,7 +205,13 @@
 
 				</div>
 			</div>
-		</div>
+			<form action="changeVehicle.do" method="GET">
+  	<input type="hidden" name="choice" value="modify" />
+ 	<input type="hidden" name="currentId" value="${vehicle.vehicleID}" />
+ 	<button class="btn btn-success" type="submit" name="nav" value="prev">previous</button>
+ 	<button class="btn btn-success" type="submit" name="nav" value="next">next</button>
+ 		</form>
+		</div><!-- inner -->
 	</div>
 	</header>
 
