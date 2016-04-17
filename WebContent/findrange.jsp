@@ -47,7 +47,7 @@
 
 <body id="page-top">
 
-	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -64,13 +64,17 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="http://www.alexmpeterson.com">AlexMPeterson.com</a>
+                        <a class="page-scroll"  href="index.jsp">App Home</a>
+                    </li>
+               
+                    <li>
+                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com">AlexMPeterson.com</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
+                        <a class="page-scroll" target="_blank"  href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="http://www.alexmpeterson.com/projects.php">Project Description</a>
+                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com/projects.php">Project Description</a>
                     </li>
 
                 </ul>
@@ -115,16 +119,20 @@
 											</form:select></td>
 										<td><form:select path="driveWheels">
 												<option value="">Drive Type</option>
-												<option value="">Add Things Here</option>
-												<option value="">Sanatize drive</option>
+												<option value="rear">Rear Wheel Drive</option>
+												<option value="front">Front Wheel Drive</option>
+												<option value="all">All or Four Wheel Drive</option>
 											</form:select></td>
 									</tr>
 									<tr>
 										<td><form:select path="fuelType">
 												<option value="">FuelType</option>
-												<option value="">Add Things Here pls</option>
-												<option value="">Sanatize fuel type</option>
-												<option value="">on input</option>
+												<option value="Diesel">Diesel</option>
+												<option value="Gasoline">Gasoline</option>
+												<option value="Midgrade">Midgrade</option>
+												<option value="Premium">Premium</option>
+												<option value="Electric">Electricity</option>
+												
 											</form:select></td>
 										<td>&nbsp;&nbsp; <form:select path="gasTax">
 												<option value="">Gas Tax</option>
@@ -136,18 +144,18 @@
 									<tr>
 										<td colspan="2">Cylinders: <form:input
 												path="numberOfCylinders" size="2" /> <form:radiobutton
-												path="cylBool" value="" />&nbsp;&nbsp;&nbsp;Any &nbsp;&nbsp;<form:radiobutton
-												path="cylBool" value="more" />More &nbsp;&nbsp;<form:radiobutton
-												path="cylBool" value="less" />Less
+												path="cylBool" value="" />&nbsp;&nbsp;&nbsp;Any
+											&nbsp;&nbsp;<form:radiobutton path="cylBool" value="more" />More
+											&nbsp;&nbsp;<form:radiobutton path="cylBool" value="less" />Less
 
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2">Displacement: <form:input
 												path="displacement" size="3" /> <form:radiobutton
-												path="cylBool" value="" />&nbsp;&nbsp;&nbsp;Any &nbsp;&nbsp;<form:radiobutton
-												path="cylBool" value="more" />More &nbsp;&nbsp;<form:radiobutton
-												path="cylBool" value="less" />Less
+												path="dispBool" value="" />&nbsp;&nbsp;&nbsp;Any
+											&nbsp;&nbsp;<form:radiobutton path="dispBool" value="more" />More
+											&nbsp;&nbsp;<form:radiobutton path="dispBool" value="less" />Less
 
 										</td>
 									</tr>
@@ -158,14 +166,16 @@
 						<button type="submit" class="btn btn-success btn-xl">Find
 							Vehicles*</button>
 
-								</form:form>
+						</form:form>
 						<div class="col-sm-4">
 							<div class="form-container"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<br><p id="warning-label">*Unspecific parameters may have a long load time.</p>
+			<br>
+			<p id="warning-label">*Unspecific parameters may have a long load
+				time.</p>
 	</header>
 
 
@@ -178,28 +188,48 @@
             </div>
         </div> -->
 	<div class="container">
-	
-		<div class="row page-disclaimer">
-		*****Repeated results are due to different trim levels of the same vehicle model.*****
-		</div>
-	
-		<c:forEach var="v" items="${vehicleListRange}">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<h3>${v.year} ${v.make} ${v.model}</h3>
-				<div class="row text-muted">
-					<div class="col-xs-12 col-sm-3">MPG (Highway): ${v.mpgHighway}</div>
-					<div class="col-xs-12 col-sm-3">MPG (City): ${v.mpgCity}</div>
-					<div class="col-xs-12 col-sm-3">MPG (Average): ${v.mpgAverage}</div>
-					<div class="col-xs-12 col-sm-3">Carbon Emission: ${v.carbonEmission}</div>
-					<div class="col-xs-12 col-sm-3">Transmission: ${v.transmission}</div>
-					<div class="col-xs-12 col-sm-3">Fuel Type: ${v.fuelType}</div>
-					<div class="col-xs-12 col-sm-3">Cylinders: ${v.numberOfCylinders}</div>
-					<div class="col-xs-12 col-sm-3">Displacement: ${v.displacement}</div>
-					<div class="col-xs-12 col-sm-3">Gas Guzzler Tax: ${v.gasTaxRequired}</div>
+
+		<c:choose>
+			<c:when test="${empty(vehicleListRange)}">
+				<div class="row page-disclaimer">
+					*****NO RESULTS FOUND*****<br>Please check your search
+					parameters and try again
 				</div>
-			</div>
-			<div class"col-md-12 "> 
+			</c:when>
+			<c:otherwise>
+				<div class="row page-disclaimer">*****Repeated results are due
+					to different trim levels of the same vehicle model.*****</div>
+
+			</c:otherwise>
+		</c:choose>
+
+
+		<c:forEach var="v" items="${vehicleListRange}">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3>${v.year} ${v.make} ${v.model}</h3>
+					<div class="row text-muted">
+						<div class="col-xs-12 col-sm-3">MPG (Highway):
+							${v.mpgHighway}</div>
+						<div class="col-xs-12 col-sm-3">MPG (City): ${v.mpgCity}</div>
+						<div class="col-xs-12 col-sm-3">MPG (Average):
+							${v.mpgAverage}</div>
+						<div class="col-xs-12 col-sm-3">Carbon Emission:
+							${v.carbonEmission}</div>
+						<div class="col-xs-12 col-sm-3">Transmission:
+							${v.transmission}</div>
+						<div class="col-xs-12 col-sm-3">Drive Wheels:
+							${v.driveWheels}</div>
+						<div class="col-xs-12 col-sm-3">Fuel Type: ${v.fuelType}</div>
+						<div class="col-xs-12 col-sm-3">Cylinders:
+							${v.numberOfCylinders}</div>
+						<div class="col-xs-12 col-sm-3">Displacement:
+							${v.displacement} L</div>
+						<div class="col-xs-12 col-sm-3">Gas Guzzler Tax:
+							${v.gasTaxRequired}</div>
+					</div>
+				</div>
+				<divclass"col-md-12 "> 
 			<form action="menuchoice.do">
 		<input type="hidden" name="id" value="${v.vehicleID}">
 		<input type="hidden" name="selection" value="modify">
@@ -207,7 +237,9 @@
 					 type="submit" value="mod" class="btn btn-danger mod-button">Modify / Remove</button>
 					 </form>
 		</div>
-		</div><br>
+		
+	</div>
+	<br>
 	<!-- row -->
 		
 		</c:forEach>

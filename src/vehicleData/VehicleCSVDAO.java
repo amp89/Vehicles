@@ -65,9 +65,11 @@ public class VehicleCSVDAO implements VehicleDAO {
 				double mpgCity = Double.parseDouble(tokens[5].trim());
 				// double mpgAverage; TODO: nothing from csv
 				double carbonEmission = Double.parseDouble(tokens[12].trim());
-				String transmission = tokens[7].trim();
-				String fuelType = tokens[6].trim();
-				String driveWheels = tokens[8].trim();
+				String transmission = normalizeTransmissionType(tokens[7].trim());
+				String fuelType = normalizeFuelType(tokens[6].trim());
+			
+				String driveWheels = normalizeDriveWheels(tokens[8].trim());
+				
 				int numberOfCylinders = Integer.parseInt(tokens[9].trim());
 				double displacement = Double.parseDouble(tokens[10].trim());
 				boolean gasTaxRequired = checkGasTax(tokens[11].trim());
@@ -88,6 +90,59 @@ public class VehicleCSVDAO implements VehicleDAO {
 //		}
 	}// readin
 
+	@Override
+	public String normalizeFuelType(String fuelType){
+		if(fuelType.toLowerCase().startsWith("die")){
+			fuelType = "Diesel";
+		}
+		else if(fuelType.toLowerCase().startsWith("gas") || fuelType.toLowerCase().startsWith("reg") ){
+			fuelType = "Gasoline";
+		}
+		else if(fuelType.toLowerCase().startsWith("prem") ){
+			fuelType = "Premium";
+		}
+		else if(fuelType.toLowerCase().startsWith("mid") ){
+			fuelType = "Midgrade";
+		}
+		else if(fuelType.toLowerCase().startsWith("ele") ){
+			fuelType = "Electricity";
+		}
+		 return fuelType;
+	}
+	
+	@Override
+	public String normalizeTransmissionType(String transmission){
+		if(transmission.toLowerCase().startsWith("man")){
+			transmission = "Manual";
+		}
+		else if(transmission.toLowerCase().startsWith("auto")){
+			transmission = "Automatic";
+		}
+		
+		return transmission;
+		
+	}
+	
+	@Override
+	public String normalizeDriveWheels(String driveWheels){
+		if(driveWheels.toLowerCase().startsWith("rear")){
+			driveWheels = "Rear Wheel Drive";
+		}
+		else if(driveWheels.toLowerCase().startsWith("front")){
+			driveWheels = "Front Wheel Drive";
+		}
+		
+		else if(driveWheels.toLowerCase().startsWith("4") || driveWheels.toLowerCase().startsWith("all") || driveWheels.toLowerCase().startsWith("part") ) {
+			driveWheels = "All or Four Wheel Drive";
+		}
+		else if(driveWheels.toLowerCase().startsWith("2")){
+			driveWheels = "2wd Unspecified";
+		}
+		
+		
+		return driveWheels;
+	}
+	
 	private boolean checkGasTax(String s) {
 		switch (s.toLowerCase()) {
 		case "t":

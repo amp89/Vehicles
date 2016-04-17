@@ -20,6 +20,10 @@ public interface VehicleDAO {
 	public double getDisplacement(int id);
 	public boolean getGasTaxRequired(int id);
 	
+	public String normalizeFuelType(String fuelType);
+	public String normalizeTransmissionType(String transmission);
+	public String normalizeDriveWheels(String driveWheels);
+	
 	public Vehicle getVehicleByID(int id);
 	public List<Vehicle> getAllVehicles();
 	

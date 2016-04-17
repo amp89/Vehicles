@@ -62,13 +62,17 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <a class="page-scroll"  href="index.jsp">App Home</a>
+                    </li>
+               
+                    <li>
                         <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com">AlexMPeterson.com</a>
                     </li>
                     <li>
-                        <a class="page-scroll"  href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
+                        <a class="page-scroll" target="_blank"  href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
                     </li>
                     <li>
-                        <a class="page-scroll"  href="http://www.alexmpeterson.com/projects.php">Project Description</a>
+                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com/projects.php">Project Description</a>
                     </li>
 
                 </ul>

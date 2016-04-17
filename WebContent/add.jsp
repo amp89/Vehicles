@@ -44,7 +44,7 @@
 
 <body id="page-top">
 
-	    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -61,13 +61,17 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <a class="page-scroll"  href="index.jsp">App Home</a>
+                    </li>
+               
+                    <li>
                         <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com">AlexMPeterson.com</a>
                     </li>
                     <li>
-                        <a class="page-scroll"  href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
+                        <a class="page-scroll" target="_blank"  href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
                     </li>
                     <li>
-                        <a class="page-scroll"  href="http://www.alexmpeterson.com/projects.php">Project Description</a>
+                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com/projects.php">Project Description</a>
                     </li>
 
                 </ul>
@@ -112,15 +116,32 @@
 
 									</tr>
 									<tr>
-										<td>Transmission</td><td><form:input path="transmission" /></td>
+										<td>Transmission</td><td><form:select path="transmission">
+												<option value="">Transmission Type</option>
+												<option value="manual">Manual</option>
+												<option value="automatic">Automatic</option>
+											</form:select></td></td>
 
 									</tr>
 									<tr>
-										<td>Fuel Type: </td><td><form:input path="fuelType" /></td>
+										<td>Fuel Type: </td><td><form:select path="fuelType">
+												<option value="">FuelType</option>
+												<option value="Diesel">Diesel</option>
+												<option value="Gasoline">Gasoline</option>
+												<option value="Midgrade">Midgrade</option>
+												<option value="Premium">Premium</option>
+												<option value="Electric">Electricity</option>
+												
+											</form:select></td>
 
 									</tr>
 									<tr>
-										<td>Drive Wheels: </td><td><form:input path="driveWheels" /></td>
+										<td>Drive Wheels: </td><td><form:select path="driveWheels">
+												<option value="">Drive Type</option>
+												<option value="rear">Rear Wheel Drive</option>
+												<option value="front">Front Wheel Drive</option>
+												<option value="all">All or Four Wheel Drive</option>
+											</form:select></td>
 
 									</tr>
 									<tr>
@@ -129,7 +150,16 @@
 
 									</tr>
 									<tr>
-										<td>Gas Tax Required: </td><td><form:input path="gasTaxRequired" /></td>
+										<td>Displacement: </td><td><form:input
+												path="displacement" /></td>
+
+									</tr>
+									<tr>
+										<td>Gas Tax Required: </td><td><form:select path="gasTaxRequired">
+												<option value="">Gas Tax</option>
+												<option value="true">Yes</option>
+												<option value="false">No</option>
+											</form:select></td>
 
 									</tr>
 							</table>

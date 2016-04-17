@@ -84,6 +84,7 @@ input {
 
 .manufacturer-icon {
 	/* 	max-height:300px; */
+	text-align:center;
 	width: 50%;
 }
 
