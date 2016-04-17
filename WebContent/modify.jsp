@@ -46,111 +46,154 @@
 <body id="page-top">
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="index.jsp">Vehicle Search WebApp</a>
-            </div>
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand page-scroll" href="index.jsp">Vehicle
+				Search WebApp</a>
+		</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="http://www.alexmpeterson.com">AlexMPeterson.com</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="http://www.alexmpeterson.com/projects.php">Project Description</a>
-                    </li>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a class="page-scroll" href="http://www.alexmpeterson.com">AlexMPeterson.com</a>
+				</li>
+				<li><a class="page-scroll"
+					href="http://www.alexmpeterson.com/projects.php">More of my
+						Projects</a></li>
+				<li><a class="page-scroll"
+					href="http://www.alexmpeterson.com/projects.php">Project
+						Description</a></li>
 
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid --> </nav>
 	<header id="add-header">
 	<div class="header-content">
 		<div class="header-content-inner">
 			<div class="container">
+				<div class="spacer">
+					<br> <br>
+
+				</div>
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<div class="form-container">
 							<form:form action="modifyVehicle.do" modelAttribute="vehicle">
 
 								<form:hidden path="vehicleID" />
+								<table>
+									<tr>
+										<td>Year:</td>
+										<td><form:input path="year" size="4" /></td>
+									</tr>
+									<tr>
+										<td>Make:</td>
+										<td><form:input path="make" size="15" /></td>
+									</tr>
+									<tr>
+										<td>Model:</td>
+										<td><form:input path="model" size="15" /></td>
+									</tr>
+
+									<tr>
+										<td>MPG (Highway)</td>
+										<td><form:input path="mpgHighway" size="4" /></td>
+									</tr>
+
+									<tr>
+										<td>Carbon Emission:</td>
+										<td><form:input path="carbonEmission" size="15" /></td>
+									</tr>
+
+									<tr>
+										<td>Transmission</td>
+										<td><form:input path="transmission" size="15" /></td>
+									</tr>
+
+									<tr>
+										<td>Fuel Type:</td>
+										<td><form:input path="fuelType" size="15" /></td>
+									</tr>
+
+									<tr>
+										<td>Drive Wheels:</td>
+										<td><form:input path="driveWheels" size="15" /></td>
+									</tr>
+
+									<tr>
+										<td>Number of Cylinders:</td>
+										<td><form:input path="numberOfCylinders" size="4" /></td>
+									</tr>
+
+									<tr>
+										<td>Gas Tax Required:</td>
+										<td><form:input path="gasTaxRequired" size="6" /></td>
+									</tr>
+
+								</table>
+
+							
+
+									<input type="radio" name="choice" value="modify" checked>Modify&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="choice" value="delete">Delete
+9
+									<!-- <input type="radio" name="choice" value="add"> -->
+
+								<button type="submit" value="mod" class="btn btn-warning">Modify
+									/ Remove</button>
 								<br>
-Year: <form:input path="year" />
 								<br>
-Make: <form:input path="make" />
-								<br>
-Model: <form:input path="model" />
-								<br>
-MPG (Highway) <form:input path="mpgHighway" />
-								<br>
-MPG (City)<form:input path="mpgCity" />
-								<br>
-Carbon Emission: <form:input path="carbonEmission" />
-								<br>
-Transmission<form:input path="transmission" />
-								<br>
-Fuel Type: <form:input path="fuelType" />
-								<br>
-Drive Wheels: <form:input path="driveWheels" />
-								<br>
-Number of Cylinders: <form:input path="numberOfCylinders" />
-								<br>
-Gas Tax Required: <form:input path="gasTaxRequired" />
 								<br>
 
-								<input type="radio" name="choice" value="modify" checked>Modify&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="choice" value="delete">Delete<br><br>
-								<!-- <input type="radio" name="choice" value="add"> -->
-
-
-								<button type="submit" value="mod"
-									class="btn btn-warning">Modify / Remove</button>
-								<br><br><br>
 							</form:form>
 
 						</div>
 					</div>
-					<div class="col-sm-5">
-					<div class="form-container">
-						<object class="manufacturer-icon" data="images/large/${fn:toLowerCase(vehicle.make)}.png"
-		type="image/png">
-		<img class="manufacturer-icon" src="images/large/unknown.png" />
-	</object><br><br>
-						Currently Saved Vehicle Data: <br>
-						Year: ${vehicle.year}<br>
-						Make: ${vehicle.make}<br>
-						Model: ${vehicle.model}<br>
-						MPG (Highway): ${vehicle.mpgHighway}<br>
-						MPG (City) ${vehicle.mpgCity}<br>
-						Emissions (CO2): ${vehicle.carbonEmission}<br> 
-						Transmission: ${vehicle.transmission}<br>
-						Fuel Type: ${vehicle.fuelType}<br>
-						Drive Wheels: ${vehicle.driveWheels}<br>
-						Cylinders: ${vehicle.numberOfCylinders}<br>
-						Gas Tax?: ${vehicle.gasTaxRequired}
+					<div class="col-sm-3">
+						<div class="form-container">
+							<br> <br> <br>
 
+
+							<object class="manufacturer-icon"
+								data="images/large/${fn:toLowerCase(vehicle.make)}.png"
+								type="image/png">
+								<img class="manufacturer-icon" src="images/large/unknown.png" />
+							</object>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="spacer">
+							<br> <br> <br> <br> <br>
+
+						</div>
+						Currently Saved Vehicle Data: <br> Year: ${vehicle.year}<br>
+						Make: ${vehicle.make}<br> Model: ${vehicle.model}<br>
+						MPG (Highway): ${vehicle.mpgHighway}<br> MPG (City)
+						${vehicle.mpgCity}<br> Emissions (CO2):
+						${vehicle.carbonEmission}<br> Transmission:
+						${vehicle.transmission}<br> Fuel Type: ${vehicle.fuelType}<br>
+						Drive Wheels: ${vehicle.driveWheels}<br> Cylinders:
+						${vehicle.numberOfCylinders}<br> Gas Tax?:
+						${vehicle.gasTaxRequired}
 					</div>
 
 
-						<div class="form-container"></div>
+					<div class="form-container"></div>
 
-					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</header>
 
 

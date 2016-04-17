@@ -156,7 +156,7 @@
 						</div>
 
 						<button type="submit" class="btn btn-success btn-xl">Find
-							Vehicles</button>
+							Vehicles*</button>
 
 								</form:form>
 						<div class="col-sm-4">
@@ -165,6 +165,7 @@
 					</div>
 				</div>
 			</div>
+			<br><p id="warning-label">*Unspecific parameters may have a long load time.</p>
 	</header>
 
 
