@@ -14,7 +14,7 @@
 <form action="menuchoice.do" method="POST">
 	<button type="submit" name="selection" value="range">Find/Modify/Remove Vehicles</button>
 	<button type="submit" name="selection" value="add">Add a Vehicle</button>
-	<button type="submit" name="selection" value="all">View All Vehicles</button>
+	<button type="submit" name="selection" value="all">List All Vehicles</button>
  	
 
  

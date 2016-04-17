@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -77,10 +78,11 @@
 	<c:forEach var="v" items="${vehicleListRange}">
 		V: ${v}<br> <form action="menuchoice.do">
 		<input type="hidden" name="id" value="${v.vehicleID}">
-		<!-- <input type="hidden" name="choice" value="modify"> -->
 		<input type="hidden" name="selection" value="modify">
 		<input type="submit" value="mod">
 		</form>
+		
+`
 	</c:forEach>
 
 </body>
