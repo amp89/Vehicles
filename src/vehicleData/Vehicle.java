@@ -2,17 +2,29 @@ package vehicleData;
 
 public class Vehicle {
 	private int vehicleID;// 0
+
 	private int year;// 1
+
 	private String make;// 2
+
 	private String model;// 3
+
 	private double mpgHighway;// 4
+
 	private double mpgCity;// 5
+
 	private double mpgAverage;// no
+
 	private double carbonEmission;// 12
+
 	private String transmission;// 7
+
 	private String fuelType;// 6
+
 	private String driveWheels;// 8
+
 	private int numberOfCylinders;// 9
+
 	private double displacement;// 10
 	private boolean gasTaxRequired;// 11
 
@@ -153,7 +165,8 @@ public class Vehicle {
 		case "false":
 			this.gasTaxRequired = false;
 			break;
-		default:break;
+		default:
+			break;
 
 		}
 	}

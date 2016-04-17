@@ -156,9 +156,8 @@
 									</tr>
 									<tr>
 										<td>Gas Tax Required: </td><td><form:select path="gasTaxRequired">
-												<option value="">Gas Tax</option>
 												<option value="true">Yes</option>
-												<option value="false">No</option>
+												<option value="false" selected>No</option>
 											</form:select></td>
 
 									</tr>
