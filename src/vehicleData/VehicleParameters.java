@@ -2,6 +2,12 @@ package vehicleData;
 
 public class VehicleParameters {
 
+	/*
+	 * this class has vehicle serach parameters
+	 * this allows the controller to recieve a VehicleParameters
+	 * on a form submission.
+	 */
+	
 	private Integer yearStart = 1984;
 	private Integer yearEnd = 2016;
 	private String make;

@@ -89,10 +89,10 @@
                 <hr>
                 <p id="site-description">View, Update, Add, or Remove Vehicles</p>
                 <form action="menuchoice.do" method="POST">
-                <!-- try removing id input from menuchoice.do -->
+
                 <button type ="submit" name="selection" value="range" class="btn btn-success btn-xl page-scroll main-page-btn">Search/Update/Remove</button>
                 <button type ="submit" name="selection" value="add" class="btn btn-success btn-xl page-scroll main-page-btn">Add Vehicle</button>
-                <!-- <button type ="submit" name="selection" value="all" class="btn btn-success btn-xl page-scroll main-page-btn">*List All Vehicles</button> -->
+
                 <input id="vidInput" type="hidden" name="id">
 	</form>
             </div>

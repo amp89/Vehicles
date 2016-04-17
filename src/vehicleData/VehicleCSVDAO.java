@@ -17,7 +17,7 @@ import vehicleController.VehicleFilter;
 public class VehicleCSVDAO implements VehicleDAO {
 	private List<Vehicle> vehicleListFull = new ArrayList<>();
 	private final String csvFileName = "vehicle-specifications.csv";
-	private static int invalidDataCount;
+//	private static int invalidDataCount;
 
 	public VehicleCSVDAO() {
 
@@ -27,20 +27,24 @@ public class VehicleCSVDAO implements VehicleDAO {
 	private ApplicationContext appContext;
 
 	@PostConstruct
-	public void init() { // TODO: THIS HAS TO BE INIT???????
+	public void init() {
+		//read in the data
 		BufferedReader buf = null;
 		try {
 			InputStream is = appContext.getResource(csvFileName).getInputStream();
 			buf = new BufferedReader(new InputStreamReader(is), 3000000);
 			//start timing
 			long start = System.currentTimeMillis();
+			//the actually file reading is done in the readInFileMethod
 			readInFile(buf);
 			long stop = System.currentTimeMillis();
-			System.out.println("START TIME: " + start  + " STOP TIME: " + stop + " TIME ELAPSED: " + (stop - start));
-//			end timing
+			//load time:
+//			System.out.println("START TIME: " + start  + " STOP TIME: " + stop + " TIME ELAPSED: " + (stop - start));
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
+			//close the reader
 			try {
 				buf.close();
 			} catch (IOException e) {
@@ -56,6 +60,11 @@ public class VehicleCSVDAO implements VehicleDAO {
 		String line = "";
 		while ((line = buf.readLine()) != null) {
 			String[] tokens = line.split(",");
+			//the data that i found for vehicles had some data that was out of place
+			//due to time constrains, i handled this erroneous data by catching a
+			//number format exception.  The data was throwing a number format exception because
+			//in several places, the misplaced data was a string, and this DAO was trying to 
+			//assign it to a int or double value.
 			try {
 				int vehicleID = Integer.parseInt(tokens[0].trim());
 				int year = Integer.parseInt(tokens[1].trim());
@@ -76,20 +85,26 @@ public class VehicleCSVDAO implements VehicleDAO {
 				vehicleListFull.add(new Vehicle(vehicleID, year, make, model, mpgHighway, mpgCity, carbonEmission,
 						transmission, fuelType, driveWheels, numberOfCylinders, displacement, gasTaxRequired));
 			} catch (NumberFormatException e) {
+				//debugging stuff:
 //				System.out.println("There was erroneous data in the csv file.");
 //				invalidDataCount++;
 //				System.out.println("The number of invalid data rows is: " + invalidDataCount);
 //				System.out.println("VehicleCSVDAO caught the exception and will\ncontinue to read the file.");
 //				e.printStackTrace();
-				System.out.println(e);
+				System.out.println("Bad line: " + e);
 			}
 		} // while line not null
-		//TODO: print lines removed
-//		for (Vehicle vehicle : vehicleListFull) {
-//			System.out.println(vehicle);
-//		}
+
 	}// readin
 
+	
+	/*
+	 * These next three methods are normalize methods.  some of the data was in different formats
+	 * so this attempts to get it into one format.  For example, if two four when drive vehicles
+	 * had their drive type as "four wheel drive" and "part time 4 wheel drive", the 
+	 * normalizeDriveWheels() method would assign them both to "All or Four Wheel Drive" 
+	 * 
+	 */
 	@Override
 	public String normalizeFuelType(String fuelType){
 		if(fuelType.toLowerCase().startsWith("die")){
@@ -143,6 +158,9 @@ public class VehicleCSVDAO implements VehicleDAO {
 		return driveWheels;
 	}
 	
+	/*
+	 * changes a string to a boolean
+	 */
 	private boolean checkGasTax(String s) {
 		switch (s.toLowerCase()) {
 		case "t":
@@ -163,85 +181,137 @@ public class VehicleCSVDAO implements VehicleDAO {
 
 	@Override
 	public int getYear(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getYear();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public String getMake(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getMake();
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public String getModel(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getModel();
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public double getMpgHighway(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getMpgHighway();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public double getMpgCity(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getMpgCity();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public double getMpgAverage(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getMpgAverage();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public double getCarbonEmission(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getCarbonEmission();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public String getTransmission(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getTransmission();
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public String getFuelType(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getFuelType();
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public String getDriveWheels(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getDriveWheels();
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public int getNumberOfCylinders(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getVehicleID();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public double getDisplacement(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.getDisplacement();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public boolean getGasTaxRequired(int id) {
-		// TODO Auto-generated method stub
+		for (Vehicle vehicle : vehicleListFull) {
+			if (vehicle.getVehicleID() == id){
+				return vehicle.isGasTaxRequired();
+			}
+		}
 		return false;
 	}
 
 	@Override
 	public List<Vehicle> getAllVehicles() {
-		// TODO Auto-generated method stub
+
 		return vehicleListFull;
 	}
 

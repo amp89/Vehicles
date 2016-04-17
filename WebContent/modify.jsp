@@ -45,43 +45,41 @@
 
 <body id="page-top">
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="index.jsp">Vehicle Search WebApp</a>
-            </div>
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand page-scroll" href="index.jsp">Vehicle
+				Search WebApp</a>
+		</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll"  href="index.jsp">App Home</a>
-                    </li>
-               
-                    <li>
-                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com">AlexMPeterson.com</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" target="_blank"  href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com/projects.php">Project Description</a>
-                    </li>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a class="page-scroll" href="index.jsp">App Home</a></li>
 
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-	<header id="add-header">
+				<li><a class="page-scroll" target="_blank"
+					href="http://www.alexmpeterson.com">AlexMPeterson.com</a></li>
+				<li><a class="page-scroll" target="_blank"
+					href="http://www.alexmpeterson.com/projects.php">More of my
+						Projects</a></li>
+				<li><a class="page-scroll" target="_blank"
+					href="http://www.alexmpeterson.com/projects.php">Project
+						Description</a></li>
+
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid --> </nav>
+	<header id="modify-header">
 	<div class="header-content">
 		<div class="header-content-inner">
 			<div class="container">
@@ -154,9 +152,9 @@
 
 								</table>
 
-							
 
-									<input type="radio" name="choice" value="modify" checked>Modify&nbsp;&nbsp;&nbsp;
+
+								<input type="radio" name="choice" value="modify" checked>Modify&nbsp;&nbsp;&nbsp;
 									<input type="radio" name="choice" value="delete">Delete
 
 
@@ -188,15 +186,59 @@
 
 						</div>
 						<div id="site-description">
-						Currently Saved Vehicle Data: <br> Year: ${vehicle.year}<br>
-						Make: ${vehicle.make}<br> Model: ${vehicle.model}<br>
-						MPG (Highway): ${vehicle.mpgHighway}<br> MPG (City)
-						${vehicle.mpgCity}<br> Emissions (CO2):
-						${vehicle.carbonEmission}<br> Transmission:
-						${vehicle.transmission}<br> Fuel Type: ${vehicle.fuelType}<br>
-						Drive Wheels: ${vehicle.driveWheels}<br> Cylinders:
-						${vehicle.numberOfCylinders}<br> Displacement: ${vehicle.displacement}<br>Gas Tax?:
-						${vehicle.gasTaxRequired}
+							<table>
+								<tr colspan="2">
+									Currently Saved Vehicle Data
+								</tr>
+								<tr>
+									<td>Year:</td>
+									<td>${vehicle.year}</td>
+								</tr>
+								<tr>
+									<td>Make:</td>
+									<td>${vehicle.make}</td>
+								</tr>
+								<tr>
+									<td>Model:</td>
+									<td>${vehicle.model}</td>
+								</tr>
+								<tr>
+									<td>MPG (Highway):</td>
+									<td>${vehicle.mpgHighway}</td>
+								</tr>
+								<tr>
+									<td>MPG (City)</td>
+									<td>${vehicle.mpgCity}</td>
+								</tr>
+								<tr>
+									<td>Emissions (CO2):</td>
+									<td>${vehicle.carbonEmission}</td>
+								</tr>
+								<tr>
+									<td>Transmission:  ∂</td>
+									<td>${vehicle.transmission}</td>
+								</tr>
+								<tr>
+									<td>Fuel Type:</td>
+									<td>${vehicle.fuelType}</td>
+								</tr>
+								<tr>
+									<td>Drive Wheels:</td>
+									<td>${vehicle.driveWheels}</td>
+								</tr>
+								<tr>
+									<td>Cylinders:</td>
+									<td>${vehicle.numberOfCylinders}</td>
+								</tr>
+								<tr>
+									<td>Displacement:</td>
+									<td>${vehicle.displacement}</td>
+								</tr>
+								<tr>
+									<td>Gas Tax?:</td>
+									<td>${vehicle.gasTaxRequired}</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 
@@ -206,12 +248,15 @@
 				</div>
 			</div>
 			<form action="changeVehicle.do" method="GET">
-  	<input type="hidden" name="choice" value="modify" />
- 	<input type="hidden" name="currentId" value="${vehicle.vehicleID}" />
- 	<button class="btn btn-success" type="submit" name="nav" value="prev">previous</button>
- 	<button class="btn btn-success" type="submit" name="nav" value="next">next</button>
- 		</form>
-		</div><!-- inner -->
+				<input type="hidden" name="choice" value="modify" /> <input
+					type="hidden" name="currentId" value="${vehicle.vehicleID}" />
+				<button class="btn btn-success" type="submit" name="nav"
+					value="prev">previous</button>
+				<button class="btn btn-success" type="submit" name="nav"
+					value="next">next</button>
+			</form>
+		</div>
+		<!-- inner -->
 	</div>
 	</header>
 

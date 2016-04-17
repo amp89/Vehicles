@@ -5,7 +5,9 @@ import java.util.List;
 
 import vehicleData.Vehicle;
 import vehicleData.VehicleParameters;
-
+/*
+ * vehicle filter filters out unwanted vehicles from the range list passed in
+ */
 public class VehicleFilter {
 	protected static List<Vehicle> filterVehicles(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		vehicleRange = filterYear(vehicleRange, vp);
@@ -22,6 +24,11 @@ public class VehicleFilter {
 		return vehicleRange;
 	}
 
+	/*
+	 * There is a method for each parameter, the VehicleParameters object passed in contains the criteria
+	 * and an iterator loops through the vehicleRange list, and removes the data that does not 
+	 * fit the specified criteria
+	 */
 	private static List<Vehicle> filterYear(List<Vehicle> vehicleRange, VehicleParameters vp) {
 		Iterator<Vehicle> yearIterator = vehicleRange.iterator();
 		while (yearIterator.hasNext()) {
