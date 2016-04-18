@@ -72,7 +72,7 @@
                         <a class="page-scroll" target="_blank"  href="http://www.alexmpeterson.com/projects.php">More of my Projects</a>
                     </li>
                     <li>
-                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com/projects.php">Project Description</a>
+                        <a class="page-scroll"  target="_blank" href="http://www.alexmpeterson.com/vehicle-project.php">Project Description</a>
                     </li>
 
                 </ul>
