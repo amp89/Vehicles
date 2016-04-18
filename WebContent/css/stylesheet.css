@@ -75,7 +75,8 @@ table {
 }
 
 input {
-	background-color: black;
+	background-color: rgb(210,210,210);
+	color: rgb(10,80,10);
 }
 
 .page-disclaimer {
