@@ -75,9 +75,12 @@ table {
 }
 
 input {
-	background-color: rgb(210,210,210);
+background-color: rgb(210,210,210);
 	color: rgb(10,80,10);
 }
+
+
+
 
 .page-disclaimer {
 	text-align: center;

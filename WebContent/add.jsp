@@ -89,7 +89,7 @@
 						<div class="form-container">
 							<table>
 
-								<form:form id="form" action="addVehicle.do" modelAttribute="vehicle">
+								<form:form action="addVehicle.do" modelAttribute="vehicle">
 									<form:hidden path="vehicleID" value="${nextID}" />
 									<tr>
 										<td>Year: </td><td><form:input path="year" /></td>
