@@ -8,3 +8,4 @@ The purpose of this project is to practice using Spring MVC by creating a CRUD (
 * Spring MVC
 * JSTL
 * JSP
+* Data for this particular project was in a CSV File
